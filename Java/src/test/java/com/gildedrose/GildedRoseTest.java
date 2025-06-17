@@ -105,5 +105,16 @@ class GildedRoseTest {
         assertEquals(0, items[0].quality);
     }
 
+    @Test
+    void normalItem_degradesTwiceAsFastAfterSellIn() {
+        Item[] items = new Item[] { new Item("Elixir of the Mongoose", 0, 10) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(-1, items[0].sellIn);
+        assertEquals(8, items[0].quality);
+    }
+
 
 }
